@@ -15,9 +15,6 @@ To Run Demo:
 After the project syncs, open the project file tree and go to katapoker\src\main\java\Main.java. Right-click and choose RUN.  
 Program Demo will run in your console.
 
-To Run Unit Tests:  FIX THIS!!!!!!
-
-From GeisslerPencilKata\src\test\java\PencilTest.java, right-click and choose RUN pencil test
 
 For more commands refer to:
 https://docs.gradle.org/current/userguide/command_line_interface.html
