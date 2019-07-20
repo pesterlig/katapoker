@@ -22,24 +22,26 @@ public class HandTest {
         assertEquals("sometext",hand.listCards("sometext"));
     }
 */
-    @Test
+    /*@Test
     public void whenHandIsPassedAStringItReturnsAStringArray() {
 
         String text = "Black White";
         hand.listCards(text);
         assertEquals("Black", hand.listCards(text)[0]);
         assertEquals("White", hand.listCards(text)[1]);
+    }*/
+
+
+
+
+     @Test
+    public void whenlistBlackCArdsIsPassedASampleInputItReturnsArrayListOfCardsForBlack() {
+
+        String text = "Black: 2H 3D 5S 9C KD  White: 2C 3H 4S 8C AH";
+        hand.listBlackCards(text);
+        assertEquals("2H", hand.listBlackCards(text).get(0));
+        assertEquals("KD", hand.listBlackCards(text).get(4));
+
     }
-
-    /* @Test
-    public void whenHandIsPassedASampleInputItReturnsAStringArrayOfCardForBlack() {
-
-        String text = "Black: 2H 3D 5S 9C KD  White: 2C 3H 4S 8C AH"
-        hand.listCards(text);
-        assertEquals("Black", hand.listCards(text)[0]);
-        assertEquals("2H", hand.listCards(text)[13]);
-
-    }
-*/
 
 }
