@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class Hand {
@@ -33,6 +34,11 @@ public class Hand {
             cards.add(Card.findByCode(cardCode));
         });
 
+        return cards;
+    }
+
+    public List<Card> sortByValuation (List<Card> cards){
+        Collections.sort(cards, new SortByValuation());
         return cards;
     }
 

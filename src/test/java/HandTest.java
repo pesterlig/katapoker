@@ -117,9 +117,6 @@ public class HandTest {
         assertEquals("2H",cardCodes.get(0));
         assertEquals(Card.HEARTS_TWO, cards.get(0));
 
-
-
-
     }
 
 

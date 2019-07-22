@@ -436,10 +436,10 @@ public enum Card {
       return null;
     }
 
-    @Override
+    /*@Override
     public String toString(){
         return this.getRankName()+" of "+ this.getSuitName();
-    }
+    }*/
 
 
     // Valuation - Convert Integer.toHexString() at Score calculation time
