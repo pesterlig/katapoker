@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -12,11 +10,12 @@ public class Main {
         String oneFlushText = "Black: 3D 2D 9D 5D KD  White: 2C 3H 4S 8C AH";
         String testFlushText = "Black: 2H 4H 5H 9H KD  White: 2C 3H 4S 8C AH";
         String oneStraightText = "Black: 3H 4H 5H 6H 2D  White: 2C 3H 4S 8C AH";
-        String oneStrightFlush = "Black: TH KH AH JH QH  White: 2C 3H 4S 8C AH";
+        String oneStraightFlush = "Black: TH KH AH JH QH  White: 2C 3H 4S 8C AH";
+        String oneHandPairsEtc = "Black: TH TD AH AS AC  White: 2C 3H 4S 8C AH";
 
 
 
-        String blackHand = hand.getBlackHand(oneStraightText);
+        String blackHand = hand.getBlackHand(oneHandPairsEtc);
         System.out.println("String blackHand = " + blackHand);
 
         List<String> cardCodes = new ArrayList<>();
@@ -48,6 +47,16 @@ public class Main {
 
         int straightScore = handScore.getScore();
         System.out.println("The score for the hand is " + straightScore);
+
+        List<Card> straightFlush = new ArrayList<>();
+        straightFlush = handScore.checkForStraightFlush(cards);
+        System.out.println("Cards in the straight array = " + straightFlush);
+
+        int straightFlushScore = handScore.getScore();
+        System.out.println("The score for the hand is " + straightFlushScore);
+
+        Map<Integer, Integer> cardMatches = handScore.findPairsEtc(cards);
+        System.out.println("The map prints as follows: " + cardMatches);
 
 
     }
