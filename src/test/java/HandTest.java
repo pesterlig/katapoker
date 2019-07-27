@@ -1,22 +1,17 @@
-import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Test;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Stream;
-
-import static junit.framework.TestCase.*;
 
 public class HandTest {
 
-    Hand hand;
+    PokerHand hand;
 
 
     @Before
     public void setUp() {
 
-        hand = new Hand();
+        String inputString = "Black: 2H 3D 5S 9C KD  White: 2C 3H 4S 8C AH";
+
+
+
     }
 
     /*@Test
@@ -34,10 +29,10 @@ public class HandTest {
     }*/
 
 
-    @Test
+    /*@Test
     public void whenSplitHandsIsPassedSampleInputItCreatesTwoStringsOfHands() {
         String text = "Black: 2H 3D 5S 9C KD  White: 2C 3H 4S 8C AH";
-        hand.getBlackHand(text);
+        hand.getCards(text);
         assertEquals("Black: 2H 3D 5S 9C KD", hand.getBlackHand(text));
     }
 
@@ -73,7 +68,7 @@ public class HandTest {
         assertEquals("AH", hand.listCardCodes(whiteHand).get(4));
     }
 
-    /*@Test
+    *//*@Test
     public void whenGetHexValueIsPassedAnArrayListOfCardsInAHandItReturnTheHexValueOfTheElementAtIndex0(){
         String text = "Black: 2H 3D 5S 9C KD  White: 2C 3H 4S 8C AH";
         String whiteHand = hand.getWhiteHand(text);
@@ -81,14 +76,14 @@ public class HandTest {
                 hand.getHexValue(cards);
         assertEquals(0x2,hand.getHexValue(cards));
         assertEquals("2C");
-    }*/
+    }*//*
 
     //test below should be part of a CardTest class instead of HandTest
     @Test
     public void whenCardFindByCardAbbreviationIsPassedValidCardAbbrItReturnsCard() {
         String abbr = "AH";
         Card chosenCard = Card.findByCode(abbr);
-        int abbrValuation = chosenCard.getValuation();
+        int abbrValuation = chosenCard.getRank().value;
 
         //assertEquals("HEARTS_ACE",CHOSEN_CARD);
         assertEquals(14, abbrValuation);
@@ -98,7 +93,7 @@ public class HandTest {
     public void whenFindByCardCode_IsPassedValidCardCode_ItReturnsCardValuation() {
         String abbr = "KS";
         Card chosenCard = Card.findByCode(abbr);
-        int abbrValuation = chosenCard.getValuation();
+        int abbrValuation = chosenCard.getRank().value;
 
         //assertEquals("HEARTS_ACE",CHOSEN_CARD);
         assertEquals(13, abbrValuation);
@@ -117,7 +112,7 @@ public class HandTest {
         assertEquals("2H",cardCodes.get(0));
         assertEquals(Card.HEARTS_TWO, cards.get(0));
 
-    }
+    }*/
 
 
 }

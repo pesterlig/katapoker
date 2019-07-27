@@ -1,40 +1,71 @@
+import enums.Card;
+
 import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        Hand hand = new Hand();
-        HandScore handScore = new HandScore(0,false,false,
-                false,false,false,false,
-                false,false);
-        String text = "Black: 2H 3D 5S 9C KD  White: 2C 3H 4S 8C AH";
+
+        /*
         String oneFlushText = "Black: 3D 2D 9D 5D KD  White: 2C 3H 4S 8C AH";
         String testFlushText = "Black: 2H 4H 5H 9H KD  White: 2C 3H 4S 8C AH";
         String oneStraightText = "Black: 3H 4H 5H 6H 2D  White: 2C 3H 4S 8C AH";
         String oneStraightFlush = "Black: TH KH AH JH QH  White: 2C 3H 4S 8C AH";
-        String oneHandPairsEtc = "Black: TH TD AH AS AC  White: 2C 3H 4S 8C AH";
+        String oneHandFullHouse = "Black: TH TD AH AS AC  White: 2C 3H 4S 8C AH";
+        String oneHandFourOfAKind = "Black: TH AD AH AS AC  White: 2C 3H 4S 8C AH";
+        String oneHandOnePair = "Black: TH 9D AH AS 4C  White: 2C 3H 4S 8C AH";
+        String oneHandOfTwoPairs = "Black: TH TD AH AS 5C  White: 2C 3H 4S 8C AH";
+        */
+
+        //Format the input data & create black & white hands
+        String inputString = "Black: 2H 3D 4H 8D KD  White: 2C 3H 4S 8C AH";
+
+        PokerHand black = new PokerHand("black");
+        String handBlack = inputString.split("  ")[0];
+        List<Card> sortedAscendingBlackHand = black.createSortedAscendingHand(handBlack);
+        black.setCards((ArrayList<Card>) sortedAscendingBlackHand);
+        black.setPokerHandType("UNDETERMINED");
 
 
+        //System.out.println(black.getHandName()+ " score is: " + black.getDecimalHandVal(black.getStringOfHexVal());
 
-        String blackHand = hand.getBlackHand(oneHandPairsEtc);
-        System.out.println("String blackHand = " + blackHand);
 
-        List<String> cardCodes = new ArrayList<>();
-        cardCodes = hand.listCardCodes(blackHand);
+        PokerHand white = new PokerHand("white");
+        String handWhite = inputString.split("  ")[1];
+        List<Card> sortedAscendingWhiteHand = white.createSortedAscendingHand(handWhite);
+        white.setCards((ArrayList<Card>) sortedAscendingWhiteHand);
+        white.setPokerHandType("UNDETERMINED");
 
-        System.out.println("ArrayList cardCodes = " + cardCodes);
 
-        List<Card> cards = new ArrayList<>();
-        cards = hand.parseCardCodes(cardCodes);
+        //System.out.println(white.getHandName()+ " score is: " + white.getDecimalHandVal(white.getCards()));
 
-        System.out.println("Cards unsorted = " + cards);
+        //Create an array of the ArrayList of cards from each hand
 
-        Collections.sort(cards);
-        System.out.println("Sorted cards = " + cards);
+        List<Card>[] nestedCards = new List[2];
+        nestedCards[0] = black.getCards();
+        nestedCards[1] = white.getCards();
 
-        Collections.sort(cards, new SortByValuation());
-        System.out.println("Cards sorted by valuation = " + cards);
+        for (int i = 0; i < nestedCards.length; i++) {
+            List<Card> cardsOfBothHands = nestedCards[i];
+            System.out.println(cardsOfBothHands);
+        }
 
-        List<Card> flush = new ArrayList<>();
+
+        //Create an array of the two hands
+
+        List<PokerHand> pokerHands = new ArrayList<>();
+        pokerHands.add(black);
+        pokerHands.add(white);
+
+        for (int i = 0; i < pokerHands.size(); i++) {
+            List<PokerHand> bothHands = pokerHands;
+            System.out.println(bothHands);
+        }
+
+        Judge judge = new Judge();
+        judge.determinePokerHandType(pokerHands);
+
+
+        /*List<Card> flush = new ArrayList<>();
         flush = handScore.checkForFlush(cards);
         System.out.println("Cards in the flush array = " + flush);
 
@@ -55,9 +86,32 @@ public class Main {
         int straightFlushScore = handScore.getScore();
         System.out.println("The score for the hand is " + straightFlushScore);
 
-        Map<Integer, Integer> cardMatches = handScore.findPairsEtc(cards);
-        System.out.println("The map prints as follows: " + cardMatches);
+        handScore.findDuplicatesOfValue(cards);*/
+
+
+
+        /*handScore.checkForFourOfAKind(cards);
+        System.out.println("Four of a Kind? " + handScore.isFourOfAKind());
+        System.out.println("Score for FourOfAKind: " + handScore.getScore());
+
+        handScore.checkForFullHouse(cards);
+        System.out.println("FullHouse? " + handScore.isFullHouse());
+        System.out.println("Score for this FullHouse: " + handScore.getScore());
+
+        handScore.checkForThreeOfAKind(cards);
+        System.out.println("Three of a Kind only? " + handScore.isThreeOfAKind());
+        System.out.println("Score for Three of a Kind: " + handScore.getScore());
+
+        handScore.checkForTwoPairs(cards, handScore.findDuplicatesOfValue(cards));
+        System.out.println("Two Pairs? " + handScore.isTwoPairs());
+        System.out.println("Score for Two Pairs: " + handScore.getScore());
+
+        handScore.checkForOnlyOnePair(cards, handScore.findDuplicatesOfValue(cards));
+        System.out.println("Only One Pair? " + handScore.isOnePair());
+        System.out.println("Score for One Pair: " + handScore.getScore());*/
 
 
     }
+
+
 }

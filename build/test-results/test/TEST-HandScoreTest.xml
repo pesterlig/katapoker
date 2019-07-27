@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="HandScoreTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-07-23T14:32:04" hostname="DESKTOP-9AK9NSF" time="0.009">
+<testsuite name="HandScoreTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2019-07-24T16:55:31" hostname="DESKTOP-9AK9NSF" time="0.024">
   <properties/>
-  <testcase name="whenCheckForFlush_IsPassedFlushHighKD_ItScores51300" classname="HandScoreTest" time="0.009"/>
-  <system-out><![CDATA[Count from the method is 1
+  <testcase name="whenCheckForStraight_IsPassedAStraight_ItReturnsStraightArray_AndCorrectScore" classname="HandScoreTest" time="0.022"/>
+  <testcase name="whenCheckForFlush_IsPassedFlushHighKD_ItScores51300" classname="HandScoreTest" time="0.001"/>
+  <testcase name="whenCheckForFlush_IsPassedAFlush_ItReturnsAFlushArrayCalledFlush" classname="HandScoreTest" time="0.001"/>
+  <system-out><![CDATA[Count from the straight method is 1
+Count from the straight method is 2
+Count from the straight method is 3
+Count from the straight method is 4
+Count from outside the for loop of the straight method is 4
+Count from the method is 1
+Count from the method is 2
+Count from the method is 3
+Count from the method is 4
+Count from outside the for loop of the method is 4
+Count from the method is 1
 Count from the method is 2
 Count from the method is 3
 Count from the method is 4
