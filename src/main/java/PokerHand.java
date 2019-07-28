@@ -2,6 +2,7 @@ import enums.Card;
 import enums.Rank;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class PokerHand {
     /*
@@ -80,23 +81,22 @@ public class PokerHand {
     //method to return a unique decimal value (from Card.getRank.hexVal))
     // for a given hand of cards for high card comparison
 
-    // todo removed unused argument
-    public int getDecimalHandVal(List<Card> sortedCards) {
+
+    public int getDecimalHandVal() {
         String stringOfHexVal = getStringOfHexVal(cards);
         int hexStringToDecimal = Integer.parseInt(stringOfHexVal, 16);
         return hexStringToDecimal;
     }
 
-    // todo spelling
     public String getStringOfHexVal(List<Card> sortedCards) {
-        char[] handCharHexValDecending = new char[5];
-        handCharHexValDecending[0] = sortedCards.get(4).getRank().hexVal;
-        handCharHexValDecending[1] = sortedCards.get(3).getRank().hexVal;
-        handCharHexValDecending[2] = sortedCards.get(2).getRank().hexVal;
-        handCharHexValDecending[3] = sortedCards.get(1).getRank().hexVal;
-        handCharHexValDecending[4] = sortedCards.get(0).getRank().hexVal;
+        char[] handCharHexValDescending = new char[5];
+        handCharHexValDescending[0] = sortedCards.get(4).getRank().hexVal;
+        handCharHexValDescending[1] = sortedCards.get(3).getRank().hexVal;
+        handCharHexValDescending[2] = sortedCards.get(2).getRank().hexVal;
+        handCharHexValDescending[3] = sortedCards.get(1).getRank().hexVal;
+        handCharHexValDescending[4] = sortedCards.get(0).getRank().hexVal;
 
-        String stringOfHexVal = new String(handCharHexValDecending);
+        String stringOfHexVal = new String(handCharHexValDescending);
         return stringOfHexVal;
     }
 
@@ -105,6 +105,22 @@ public class PokerHand {
         String OxHexVal = "0x";
         OxHexVal = OxHexVal.concat(stringOfHexVal);
         return OxHexVal;
+    }
+
+    public int findDistinctValues(List<Card> sortedCards) {
+        List<Character> distinctHexValues = new ArrayList<>();
+
+        distinctHexValues = (sortedCards.stream()
+                .map(Card::getRank)
+                .distinct()
+                .map(rank -> rank.hexVal)
+                .collect(Collectors.toList()));
+        Collections.sort(distinctHexValues, Collections.reverseOrder());
+        String stringOfDistinctHexVal = distinctHexValues.stream().map(e -> e.toString()).collect(Collectors.joining());
+
+        int decimalHighCardBonus = Integer.parseInt(stringOfDistinctHexVal,16);
+        return decimalHighCardBonus;
+
     }
 
     public String getHandName() {

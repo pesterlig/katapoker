@@ -13,11 +13,11 @@ public class Main {
         String oneHandFullHouse = "Black: TH TD AH AS AC  White: 2C 3H 4S 8C AH";
         String oneHandFourOfAKind = "Black: TH AD AH AS AC  White: 2C 3H 4S 8C AH";
         String oneHandOnePair = "Black: TH 9D AH AS 4C  White: 2C 3H 4S 8C AH";
-        String oneHandOfTwoPairs = "Black: TH TD AH AS 5C  White: 2C 3H 4S 8C AH";
+        String oneHandOfTwoPairs = "Black: TH TD AH AS 5C  White: TC TS AD AC 8C";
         */
 
         //Format the input data & create black & white hands
-        String inputString = "Black: 2H 3D 4H 8D KD  White: 2C 3H 4S 8C AH";
+        String inputString = "Black: TH TD AH AS 5C  White: TC TS AD AC 8C";
 
         PokerHand black = new PokerHand("black");
         String handBlack = inputString.split("  ")[0];
@@ -63,6 +63,8 @@ public class Main {
 
         Judge judge = new Judge();
         judge.determinePokerHandType(pokerHands);
+        judge.compareHandsForWin(pokerHands);
+
 
 
         /*List<Card> flush = new ArrayList<>();

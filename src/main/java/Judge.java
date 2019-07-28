@@ -7,11 +7,6 @@ import java.util.*;
 
 public class Judge {
 
-    /*private PokerHand pokerHand;
-
-    public Judge(PokerHand pokerHand) {
-        this.pokerHand = pokerHand;
-    }*/
 
     // todo remove nested word - done
     public void determinePokerHandType(List<PokerHand> hands) {
@@ -26,6 +21,25 @@ public class Judge {
             checkForHighCard(hand);
         });
     }
+
+
+    public void compareHandsForWin(List<PokerHand> hands) {
+
+
+
+        if (hands.get(0).getScore() == hands.get(1).getScore()) {
+
+            System.out.println("Tie Result");
+        } else if (hands.get(0).getScore() > hands.get(1).getScore()) {
+            System.out.println(hands.get(0).getHandName() + " wins with " + hands.get(0).getPokerHandType());
+        } else {
+            System.out.println(hands.get(1).getHandName() + " wins with " + hands.get(1).getPokerHandType());
+        }
+    }
+
+    //
+
+
 
     /*
     public method takes an array of five cards & calls all private
@@ -46,7 +60,7 @@ public class Judge {
 
         if (count == 4) {
             pokerHand.setPokerHandType("FLUSH");
-            pokerHand.setScore(0x500000);
+            pokerHand.setScore(0x500000 + (pokerHand.getDecimalHandVal()));
             System.out.println(pokerHand.getHandName() + " score: " + pokerHand.getScore());//todo: remove this later
 
         } else {
@@ -70,11 +84,11 @@ public class Judge {
             if (count == 4) {
                 if (pokerHand.getPokerHandType().equals("FLUSH")) {
                     pokerHand.setPokerHandType("STRAIGHT FLUSH");
-                    pokerHand.setScore(0x900000);
+                    pokerHand.setScore(0x900000 + (pokerHand.getCards().get(3).getRank().hexVal * 0x64));
                     System.out.println(pokerHand.getHandName() + " score: " + pokerHand.getScore());//todo: remove this later
                 } else {
                     pokerHand.setPokerHandType("STRAIGHT");
-                    pokerHand.setScore(0x400000);
+                    pokerHand.setScore(0x400000 + (pokerHand.getCards().get(3).getRank().hexVal * 0x64));
                     System.out.println(pokerHand.getHandName() + " score: " + pokerHand.getScore());//todo: remove this later
                 }
 
@@ -155,7 +169,8 @@ public class Judge {
         List<Card> twoPairs = new ArrayList<Card>(); // todo remove unused variable
         if (pairs.size() == 2) {
             pokerHand.setPokerHandType("TWO_PAIRS");
-            pokerHand.setScore(0x200000 + (pairs.get(1) * 0x64));
+            int decimalBonus = pokerHand.findDistinctValues(pokerHand.getCards());
+            pokerHand.setScore((0x200000 + (pairs.get(1) * 0x64)) + decimalBonus);
             System.out.println(pokerHand.getHandName() + " score: " + pokerHand.getScore());//todo: remove this later
         }
 
@@ -170,7 +185,8 @@ public class Judge {
         List<Card> onePair = new ArrayList<Card>(); // todo remove unused variable
         if (pairs.size() == 1) {
             pokerHand.setPokerHandType("ONE_PAIR");
-            pokerHand.setScore(0x100000 + (pairs.get(0) * 0x64));
+            int decimalBonus = pokerHand.findDistinctValues(pokerHand.getCards());
+            pokerHand.setScore((0x100000 + (pairs.get(0) * 0x64)) + decimalBonus);
             System.out.println(pokerHand.getHandName() + " score: " + pokerHand.getScore());//todo: remove this later
         }
 
@@ -179,7 +195,7 @@ public class Judge {
     private void checkForHighCard(PokerHand pokerHand) {
         if (pokerHand.getPokerHandType().equals("UNDETERMINED")) {
             pokerHand.setPokerHandType("HIGH_CARD");
-            pokerHand.setScore(pokerHand.getDecimalHandVal(pokerHand.getCards()));
+            pokerHand.setScore(pokerHand.getDecimalHandVal());
             System.out.println(pokerHand.getHandName() + " score: " + pokerHand.getScore());//todo: remove this later
         }
     }
