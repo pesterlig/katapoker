@@ -39,14 +39,15 @@ public class Judge {
 
 
 
-        if (hands.get(0).getScore() == hands.get(1).getScore()) {
-
-            winner = "Tie";
+        if (hands.get(0).getScore().equals(hands.get(1).getScore())) {
+            winner = "tie";
+            System.out.println(hands.get(0).getHandName() + " has a " + hands.get(0).getPokerHandType()+ " and is tied with " +
+                    hands.get(1).getHandName() + " which has the same value " + hands.get(1).getPokerHandType()  );
         } else if (hands.get(0).getScore() > hands.get(1).getScore()) {
             winner = hands.get(0).getHandName();
-            //System.out.println(hands.get(0).getHandName() + " wins with " + hands.get(0).getPokerHandType());
+            System.out.println(hands.get(0).getHandName() + " wins with " + hands.get(0).getPokerHandType());
         } else {
-            //System.out.println(hands.get(1).getHandName() + " wins with " + hands.get(1).getPokerHandType());
+            System.out.println(hands.get(1).getHandName() + " wins with " + hands.get(1).getPokerHandType());
             winner = hands.get(1).getHandName();
         }
 

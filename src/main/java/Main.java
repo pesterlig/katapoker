@@ -5,57 +5,43 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
 
-        /*
-        String oneFlushText = "Black: 3D 2D 9D 5D KD  White: 2C 3H 4S 8C AH";
-        String testFlushText = "Black: 2H 4H 5H 9H KD  White: 2C 3H 4S 8C AH";
-        String oneStraightText = "Black: 3H 4H 5H 6H 2D  White: 2C 3H 4S 8C AH";
-        String oneStraightFlush = "Black: TH KH AH JH QH  White: 2C 3H 4S 8C AH";
-        String oneHandFullHouse = "Black: TH TD AH AS AC  White: 2C 3H 4S 8C AH";
-        String oneHandFourOfAKind = "Black: TH AD AH AS AC  White: 2C 3H 4S 8C AH";
-        String oneHandOnePair = "Black: TH 9D AH AS 4C  White: 2C 3H 4S 8C AH";
-        String oneHandOfTwoPairs = "Black: TH TD AH AS 5C  White: TC TS AD AC 8C";
-        */
+        Scanner input = new Scanner(System.in);
 
-        //Format the input data & create black & white hands
+        System.out.println("This program evaluates two poker hands expressed as a string of data, formatted as the examples below: \n" +
+                "Black: 2H 4H 3S 8H AD  White: 2C 3H 4S 8C AH\n" +
+                "Black: 2H 3D 5S 9C KD  White: 2C 3H 4S 8C AH\n" +
+                "Black: 2H 4S 4C 2D 4H  White: 2S 8S AS QS 3S\n" +
+                "Black: 2H 3D 5S 9C KD  White: 2C 3H 4S 8C KH\n" +
+                "Black: 2H 3D 5S 9C KD  White: 2D 3H 5C 9S KH");
 
-        String inputString = "Black: 4H 3H AH 2H 5H  White: TC TS AD AC 8C";
-        runAllTheThings(inputString);
-
-       /* PokerHand black = new PokerHand("black");
-        String handBlack = inputString.split("  ")[0];
-        List<Card> sortedAscendingBlackHand = black.createSortedAscendingHand(handBlack);
-        black.setCards((ArrayList<Card>) sortedAscendingBlackHand);
-        black.setPokerHandType("UNDETERMINED");
-
-
-        //System.out.println(black.getHandName()+ " score is: " + black.getDecimalHandVal(black.getStringOfHexVal());
-
-
-        PokerHand white = new PokerHand("white");
-        String handWhite = inputString.split("  ")[1];
-        List<Card> sortedAscendingWhiteHand = white.createSortedAscendingHand(handWhite);
-        white.setCards((ArrayList<Card>) sortedAscendingWhiteHand);
-        white.setPokerHandType("UNDETERMINED");*/
-
-
-
-        /*//Create an array of the two hands
-
-        List<PokerHand> pokerHands = new ArrayList<>();
-        pokerHands.add(black);
-        pokerHands.add(white);
-
-        for (int i = 0; i < pokerHands.size(); i++) {
-            List<PokerHand> bothHands = pokerHands;
-            System.out.println(bothHands);
+        String choice = "0";
+        //Demo Loop
+        while (!choice.equalsIgnoreCase("q") || choice.equalsIgnoreCase("0")) {
+            displayPencilDemoMenu();
+            choice = input.nextLine();
+            if (choice.equalsIgnoreCase("E")) {
+                System.out.println("Please enter your data string. You may try one of the lines above, or create your own. \n " +
+                        "(Ensure one space between cards and TWO SPACES between the last card of the black hand and White:");
+                System.out.println("");
+                String inputPokerHands = input.nextLine();
+                runAllTheThings(inputPokerHands);
+            } else if (choice.contains("q")) {
+                System.out.println("Thanks for playing!");
+                System.out.println("Good bye.");
+                System.exit(0);
+            } else
+                System.out.println("That was not a valid choice");
         }
-
-        Judge judge = new Judge();
-        judge.determinePokerHandType(pokerHands);
-        judge.compareHandsForWin(pokerHands);
-*/
-
     }
+
+    public static void displayPencilDemoMenu() {
+        System.out.println("");
+        System.out.println("What would you like to do?");
+        System.out.println(" E = Evaluate some Poker Hands!");
+        System.out.println(" Leave Kata Poker Demo (Type q to quit)");
+    }
+
+
 
     public static String runAllTheThings(String input){
         PokerHand black = new PokerHand("black");
@@ -84,6 +70,7 @@ public class Main {
         }
 
         Judge judge = new Judge();
+        judge.displayEachHandOfCards(pokerHands);
         judge.determinePokerHandType(pokerHands);
         String winner = judge.compareHandsForWin(pokerHands);
         System.out.println(winner);

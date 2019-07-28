@@ -37,9 +37,8 @@ public class PokerHand {
 
     public List<String> listCardCodes(String handStr) {
 
-        //String[] splitHandStr = handStr.split(" "); // todo inline this variable
         List<String> cardCodes = new ArrayList<>();
-        List<String> splitHand = Arrays.asList(handStr.split(" ")); // todo to right here
+        List<String> splitHand = Arrays.asList(handStr.split(" "));
         for (int i = 1; i < 6; i++) {
             cardCodes.add(splitHand.get(i));
         }
@@ -112,7 +111,7 @@ public class PokerHand {
         Collections.sort(distinctHexValues, Collections.reverseOrder());
         String stringOfDistinctHexVal = distinctHexValues.stream().map(e -> e.toString()).collect(Collectors.joining());
 
-        int decimalHighCardBonus = Integer.parseInt(stringOfDistinctHexVal,16);
+        int decimalHighCardBonus = Integer.parseInt(stringOfDistinctHexVal, 16);
         return decimalHighCardBonus;
 
     }
@@ -163,17 +162,6 @@ public class PokerHand {
         this.valueOfThreeOfAKind = valueOfThreeOfAKind;
     }
 
-
-
-    /*// todo why is this not used?
-    public int getValueOfFullHouse() {
-        return valueOfFullHouse;
-    }
-
-    // todo why is this not used?
-    public void setValueOfFullHouse(int valueOfFullHouse) {
-        this.valueOfFullHouse = valueOfFullHouse;
-    }*/
 
     public Set<Integer> getValuesOfPairs() {
         return valuesOfPairs;

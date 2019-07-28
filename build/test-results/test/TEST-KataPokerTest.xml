@@ -1,22 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="KataPokerTest" tests="14" skipped="0" failures="0" errors="0" timestamp="2019-07-28T21:12:08" hostname="DESKTOP-9AK9NSF" time="0.177">
+<testsuite name="KataPokerTest" tests="16" skipped="0" failures="0" errors="0" timestamp="2019-07-28T22:58:22" hostname="DESKTOP-9AK9NSF" time="0.168">
   <properties/>
-  <testcase name="testbutts[0]" classname="KataPokerTest" time="0.06"/>
-  <testcase name="testbutts[1]" classname="KataPokerTest" time="0.024"/>
-  <testcase name="testbutts[2]" classname="KataPokerTest" time="0.002"/>
-  <testcase name="testbutts[3]" classname="KataPokerTest" time="0.003"/>
-  <testcase name="testbutts[4]" classname="KataPokerTest" time="0.004"/>
-  <testcase name="testbutts[5]" classname="KataPokerTest" time="0.001"/>
-  <testcase name="testbutts[6]" classname="KataPokerTest" time="0.006"/>
-  <testcase name="testbutts[7]" classname="KataPokerTest" time="0.003"/>
-  <testcase name="testbutts[8]" classname="KataPokerTest" time="0.004"/>
-  <testcase name="testbutts[9]" classname="KataPokerTest" time="0.005"/>
+  <testcase name="testbutts[0]" classname="KataPokerTest" time="0.039"/>
+  <testcase name="testbutts[1]" classname="KataPokerTest" time="0.02"/>
+  <testcase name="testbutts[2]" classname="KataPokerTest" time="0.02"/>
+  <testcase name="testbutts[3]" classname="KataPokerTest" time="0.014"/>
+  <testcase name="testbutts[4]" classname="KataPokerTest" time="0.003"/>
+  <testcase name="testbutts[5]" classname="KataPokerTest" time="0.002"/>
+  <testcase name="testbutts[6]" classname="KataPokerTest" time="0.005"/>
+  <testcase name="testbutts[7]" classname="KataPokerTest" time="0.002"/>
+  <testcase name="testbutts[8]" classname="KataPokerTest" time="0.003"/>
+  <testcase name="testbutts[9]" classname="KataPokerTest" time="0.002"/>
   <testcase name="testbutts[10]" classname="KataPokerTest" time="0.002"/>
-  <testcase name="testbutts[11]" classname="KataPokerTest" time="0.001"/>
-  <testcase name="testbutts[12]" classname="KataPokerTest" time="0.001"/>
-  <testcase name="testbutts[13]" classname="KataPokerTest" time="0.003"/>
+  <testcase name="testbutts[11]" classname="KataPokerTest" time="0.009"/>
+  <testcase name="testbutts[12]" classname="KataPokerTest" time="0.012"/>
+  <testcase name="testbutts[13]" classname="KataPokerTest" time="0.007"/>
+  <testcase name="testbutts[14]" classname="KataPokerTest" time="0.008"/>
+  <testcase name="testbutts[15]" classname="KataPokerTest" time="0.011"/>
   <system-out><![CDATA[[PokerHand@dfea12a, PokerHand@10e14421]
 [PokerHand@dfea12a, PokerHand@10e14421]
+Two of Hearts, 
+Three of Hearts, 
+Four of Hearts, 
+Five of Hearts, 
+Ace of Hearts, 
+Eight of Clubs, 
+Ten of Clubs, 
+Ten of Spades, 
+Ace of Diamonds, 
+Ace of Clubs, 
 black score: 6181938
 black score: 9442484
 1 => 1
@@ -28,9 +40,20 @@ black score: 9442484
 1 => 1
 2 => 2
 white score: 2102304
+black wins with STRAIGHT FLUSH
 black
-[PokerHand@6ec5e63a, PokerHand@644ed985]
-[PokerHand@6ec5e63a, PokerHand@644ed985]
+[PokerHand@644ed985, PokerHand@1591be22]
+[PokerHand@644ed985, PokerHand@1591be22]
+Two of Hearts, 
+Four of Hearts, 
+Five of Hearts, 
+Nine of Hearts, 
+King of Diamonds, 
+Two of Clubs, 
+Three of Hearts, 
+Four of Spades, 
+Eight of Clubs, 
+Ace of Hearts, 
 1 => 1
 1 => 1
 1 => 1
@@ -43,9 +66,46 @@ black score: 890178
 1 => 1
 1 => 1
 white score: 951346
+white wins with HIGH_CARD
 white
-[PokerHand@4f98dde7, PokerHand@5d88b760]
-[PokerHand@4f98dde7, PokerHand@5d88b760]
+[PokerHand@5d88b760, PokerHand@45f0725d]
+[PokerHand@5d88b760, PokerHand@45f0725d]
+Two of Hearts, 
+Three of Spades, 
+Four of Hearts, 
+Eight of Hearts, 
+Ace of Diamonds, 
+Two of Clubs, 
+Three of Hearts, 
+Four of Spades, 
+Eight of Clubs, 
+Ace of Hearts, 
+1 => 1
+1 => 1
+1 => 1
+1 => 1
+1 => 1
+black score: 951346
+1 => 1
+1 => 1
+1 => 1
+1 => 1
+1 => 1
+white score: 951346
+black has a HIGH_CARD and is tied with white which has the same value HIGH_CARD
+tie
+[PokerHand@234a58b3, PokerHand@2a34ded8]
+[PokerHand@234a58b3, PokerHand@2a34ded8]
+Two of Diamonds, 
+Three of Hearts, 
+Four of Hearts, 
+Five of Hearts, 
+Six of Hearts, 
+Two of Clubs, 
+Three of Hearts, 
+Four of Spades, 
+Eight of Clubs, 
+Ace of Hearts, 
 black score: 4199604
 1 => 1
 1 => 1
@@ -58,9 +118,20 @@ black score: 4199604
 1 => 1
 1 => 1
 white score: 951346
+black wins with STRAIGHT
 black
-[PokerHand@234a58b3, PokerHand@2a34ded8]
-[PokerHand@234a58b3, PokerHand@2a34ded8]
+[PokerHand@74bba1cd, PokerHand@5c5e029]
+[PokerHand@74bba1cd, PokerHand@5c5e029]
+Ten of Hearts, 
+Jack of Hearts, 
+Queen of Hearts, 
+King of Hearts, 
+Ace of Hearts, 
+Two of Clubs, 
+Three of Hearts, 
+Four of Spades, 
+Eight of Clubs, 
+Ace of Hearts, 
 black score: 6216890
 black score: 9443984
 1 => 1
@@ -74,11 +145,22 @@ black score: 9443984
 1 => 1
 1 => 1
 white score: 951346
+black wins with STRAIGHT FLUSH
 black
-[PokerHand@5c5e029, PokerHand@90b2c57]
-[PokerHand@5c5e029, PokerHand@90b2c57]
-3 => 3
+[PokerHand@683a3b18, PokerHand@42545a9e]
+[PokerHand@683a3b18, PokerHand@42545a9e]
+Ten of Hearts, 
+Ten of Diamonds, 
+Ace of Hearts, 
+Ace of Spades, 
+Ace of Clubs, 
+Two of Clubs, 
+Three of Hearts, 
+Four of Spades, 
+Eight of Clubs, 
+Ace of Hearts, 
 2 => 2
+3 => 3
 black score: 6298356
 black score: 1049810
 1 => 1
@@ -87,22 +169,44 @@ black score: 1049810
 1 => 1
 1 => 1
 white score: 951346
+black wins with ONE_PAIR
 black
-[PokerHand@41265f38, PokerHand@683a3b18]
-[PokerHand@41265f38, PokerHand@683a3b18]
+[PokerHand@12edbf17, PokerHand@61c1fded]
+[PokerHand@12edbf17, PokerHand@61c1fded]
+Nine of Hearts, 
+Ten of Hearts, 
+Ace of Diamonds, 
+Ace of Spades, 
+Ace of Clubs, 
+Three of Clubs, 
+Three of Hearts, 
+Three of Spades, 
+Three of Diamonds, 
+Ace of Hearts, 
+1 => 1
 1 => 1
 3 => 3
-1 => 1
-1 => 1
 4 => 4
 white score: 8393708
+1 => 1
+white wins with FOUR_OF_KIND
 white
-[PokerHand@42545a9e, PokerHand@12edbf17]
-[PokerHand@42545a9e, PokerHand@12edbf17]
+[PokerHand@589af836, PokerHand@387ad911]
+[PokerHand@589af836, PokerHand@387ad911]
+Four of Clubs, 
+Nine of Diamonds, 
+Ten of Hearts, 
+Ace of Hearts, 
+Ace of Spades, 
+Two of Clubs, 
+Three of Hearts, 
+Four of Spades, 
+Eight of Clubs, 
+Ace of Diamonds, 
+1 => 1
+1 => 1
 1 => 1
 2 => 2
-1 => 1
-1 => 1
 black score: 1110028
 1 => 1
 1 => 1
@@ -110,9 +214,44 @@ black score: 1110028
 1 => 1
 1 => 1
 white score: 951346
+black wins with ONE_PAIR
 black
-[PokerHand@61c1fded, PokerHand@589af836]
-[PokerHand@61c1fded, PokerHand@589af836]
+[PokerHand@4710cc0e, PokerHand@29d07f94]
+[PokerHand@4710cc0e, PokerHand@29d07f94]
+Four of Clubs, 
+Nine of Diamonds, 
+Ten of Hearts, 
+Ace of Hearts, 
+Ace of Spades, 
+Four of Spades, 
+Nine of Hearts, 
+Ten of Clubs, 
+Ace of Clubs, 
+Ace of Diamonds, 
+1 => 1
+1 => 1
+1 => 1
+2 => 2
+black score: 1110028
+1 => 1
+1 => 1
+1 => 1
+2 => 2
+white score: 1110028
+black has a ONE_PAIR and is tied with white which has the same value ONE_PAIR
+tie
+[PokerHand@260479d0, PokerHand@48589e50]
+[PokerHand@260479d0, PokerHand@48589e50]
+Five of Clubs, 
+Ten of Hearts, 
+Ten of Diamonds, 
+Ace of Hearts, 
+Ace of Spades, 
+Eight of Clubs, 
+Ten of Clubs, 
+Ten of Spades, 
+Ace of Diamonds, 
+Ace of Clubs, 
 1 => 1
 2 => 2
 2 => 2
@@ -121,9 +260,20 @@ black score: 2102301
 1 => 1
 2 => 2
 white score: 2102304
+white wins with TWO_PAIRS
 white
-[PokerHand@387ad911, PokerHand@4710cc0e]
-[PokerHand@387ad911, PokerHand@4710cc0e]
+[PokerHand@9e94be9, PokerHand@23efb99f]
+[PokerHand@9e94be9, PokerHand@23efb99f]
+Eight of Hearts, 
+Ten of Hearts, 
+Ten of Diamonds, 
+Ace of Hearts, 
+Ace of Spades, 
+Eight of Clubs, 
+Ten of Clubs, 
+Ten of Spades, 
+Ace of Diamonds, 
+Ace of Clubs, 
 2 => 2
 1 => 1
 2 => 2
@@ -132,20 +282,42 @@ black score: 2102304
 1 => 1
 2 => 2
 white score: 2102304
-white
-[PokerHand@29d07f94, PokerHand@260479d0]
-[PokerHand@29d07f94, PokerHand@260479d0]
-2 => 2
+black has a TWO_PAIRS and is tied with white which has the same value TWO_PAIRS
+tie
+[PokerHand@26208ecb, PokerHand@2a863e41]
+[PokerHand@26208ecb, PokerHand@2a863e41]
+Five of Hearts, 
+Five of Diamonds, 
+Eight of Hearts, 
+Ace of Hearts, 
+Ace of Spades, 
+Eight of Clubs, 
+Ten of Clubs, 
+Ten of Spades, 
+Ace of Diamonds, 
+Ace of Clubs, 
 2 => 2
 1 => 1
+2 => 2
 black score: 2102269
 2 => 2
 1 => 1
 2 => 2
 white score: 2102304
+white wins with TWO_PAIRS
 white
-[PokerHand@48589e50, PokerHand@9e94be9]
-[PokerHand@48589e50, PokerHand@9e94be9]
+[PokerHand@69738efb, PokerHand@370ee10b]
+[PokerHand@69738efb, PokerHand@370ee10b]
+Five of Hearts, 
+Five of Diamonds, 
+Eight of Hearts, 
+Jack of Hearts, 
+Ace of Spades, 
+Five of Clubs, 
+Five of Spades, 
+Eight of Clubs, 
+Jack of Clubs, 
+Ace of Diamonds, 
 2 => 2
 1 => 1
 1 => 1
@@ -156,9 +328,20 @@ black score: 1109369
 1 => 1
 1 => 1
 white score: 1109369
-white
-[PokerHand@23efb99f, PokerHand@26208ecb]
-[PokerHand@23efb99f, PokerHand@26208ecb]
+black has a ONE_PAIR and is tied with white which has the same value ONE_PAIR
+tie
+[PokerHand@157a67f7, PokerHand@e15272f]
+[PokerHand@157a67f7, PokerHand@e15272f]
+Five of Hearts, 
+Five of Diamonds, 
+Nine of Hearts, 
+Jack of Hearts, 
+Ace of Spades, 
+Five of Clubs, 
+Five of Spades, 
+Eight of Clubs, 
+Jack of Clubs, 
+Ace of Diamonds, 
 1 => 1
 2 => 2
 1 => 1
@@ -169,9 +352,20 @@ black score: 1109385
 1 => 1
 1 => 1
 white score: 1109369
+black wins with ONE_PAIR
 black
-[PokerHand@2a863e41, PokerHand@69738efb]
-[PokerHand@2a863e41, PokerHand@69738efb]
+[PokerHand@7be47440, PokerHand@3ba2d48e]
+[PokerHand@7be47440, PokerHand@3ba2d48e]
+Two of Hearts, 
+Three of Diamonds, 
+Four of Hearts, 
+Five of Clubs, 
+Ace of Hearts, 
+Eight of Clubs, 
+Nine of Spades, 
+Ten of Clubs, 
+Jack of Clubs, 
+Ace of Diamonds, 
 black score: 4199604
 1 => 1
 1 => 1
@@ -184,15 +378,27 @@ white score: 4200904
 1 => 1
 1 => 1
 1 => 1
+white wins with STRAIGHT
 white
-[PokerHand@370ee10b, PokerHand@157a67f7]
-[PokerHand@370ee10b, PokerHand@157a67f7]
+[PokerHand@71fb78c2, PokerHand@23467f00]
+[PokerHand@71fb78c2, PokerHand@23467f00]
+Two of Hearts, 
+Four of Hearts, 
+Four of Spades, 
+Four of Diamonds, 
+Five of Hearts, 
+Eight of Clubs, 
+Ten of Clubs, 
+Ten of Spades, 
+Ten of Diamonds, 
+Ace of Clubs, 
+3 => 3
+1 => 1
 1 => 1
 3 => 3
 1 => 1
 1 => 1
-1 => 1
-3 => 3
+white wins with THREE_OF_KIND
 white
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
