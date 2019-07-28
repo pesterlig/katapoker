@@ -5,12 +5,8 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class PokerHand {
-    /*
-    hand takes a string arg, input data, parses it  creates a hand object that has a five card array
-    a string Name "blackHand" or "whiteHand", a score (subtypes are inherited, not HAS A objects
-*/
 
-    private String handName;
+    private final String handName;
     private ArrayList<Card> cards;
     private Integer score;
     private String pokerHandType;
@@ -31,9 +27,6 @@ public class PokerHand {
         this.cardMatchCounter = new HashMap<>();
     }
 
-    //todo: make specific pokerHandType classes (ThreeOfAKind etc.) that extend Pokerhand and move valueOfThreeOfAKind etc.
-
-
     public void setCardMatchCounter(Map<Rank, Integer> cardMatchCounter) {
         this.cardMatchCounter = cardMatchCounter;
     }
@@ -44,9 +37,9 @@ public class PokerHand {
 
     public List<String> listCardCodes(String handStr) {
 
-        String[] splitHandStr = handStr.split(" "); // todo inline this variable
+        //String[] splitHandStr = handStr.split(" "); // todo inline this variable
         List<String> cardCodes = new ArrayList<>();
-        List<String> splitHand = Arrays.asList(splitHandStr); // todo to right here
+        List<String> splitHand = Arrays.asList(handStr.split(" ")); // todo to right here
         for (int i = 1; i < 6; i++) {
             cardCodes.add(splitHand.get(i));
         }
@@ -78,6 +71,7 @@ public class PokerHand {
         return sortedCards;
     }
 
+
     //method to return a unique decimal value (from Card.getRank.hexVal))
     // for a given hand of cards for high card comparison
 
@@ -101,11 +95,11 @@ public class PokerHand {
     }
 
     // todo remove unused method
-    public String addOxToStringOfHexVal(String stringOfHexVal) {
+    /*public String addOxToStringOfHexVal(String stringOfHexVal) {
         String OxHexVal = "0x";
         OxHexVal = OxHexVal.concat(stringOfHexVal);
         return OxHexVal;
-    }
+    }*/
 
     public int findDistinctValues(List<Card> sortedCards) {
         List<Character> distinctHexValues = new ArrayList<>();
@@ -123,14 +117,11 @@ public class PokerHand {
 
     }
 
+
     public String getHandName() {
         return handName;
     }
 
-    // todo remove unused method, make hand name final
-    public void setHandName(String handName) {
-        this.handName = handName;
-    }
 
     public ArrayList<Card> getCards() {
         return cards;
@@ -172,7 +163,9 @@ public class PokerHand {
         this.valueOfThreeOfAKind = valueOfThreeOfAKind;
     }
 
-    // todo why is this not used?
+
+
+    /*// todo why is this not used?
     public int getValueOfFullHouse() {
         return valueOfFullHouse;
     }
@@ -180,7 +173,7 @@ public class PokerHand {
     // todo why is this not used?
     public void setValueOfFullHouse(int valueOfFullHouse) {
         this.valueOfFullHouse = valueOfFullHouse;
-    }
+    }*/
 
     public Set<Integer> getValuesOfPairs() {
         return valuesOfPairs;

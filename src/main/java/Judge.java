@@ -5,6 +5,8 @@ import enums.Rank;
 import java.lang.reflect.Array;
 import java.util.*;
 
+import static enums.Card.*;
+
 public class Judge {
 
 
@@ -22,19 +24,33 @@ public class Judge {
         });
     }
 
+    public void displayEachHandOfCards(List<PokerHand> hands){
+        hands.forEach((hand) -> {
+            displayHands(hand);
+        });
+    }
 
-    public void compareHandsForWin(List<PokerHand> hands) {
+
+
+
+    public String compareHandsForWin(List<PokerHand> hands) {
+
+        String winner = "Narp";
 
 
 
         if (hands.get(0).getScore() == hands.get(1).getScore()) {
 
-            System.out.println("Tie Result");
+            winner = "Tie";
         } else if (hands.get(0).getScore() > hands.get(1).getScore()) {
-            System.out.println(hands.get(0).getHandName() + " wins with " + hands.get(0).getPokerHandType());
+            winner = hands.get(0).getHandName();
+            //System.out.println(hands.get(0).getHandName() + " wins with " + hands.get(0).getPokerHandType());
         } else {
-            System.out.println(hands.get(1).getHandName() + " wins with " + hands.get(1).getPokerHandType());
+            //System.out.println(hands.get(1).getHandName() + " wins with " + hands.get(1).getPokerHandType());
+            winner = hands.get(1).getHandName();
         }
+
+        return winner;
     }
 
     //
@@ -46,6 +62,14 @@ public class Judge {
     methods to determine what kind of poker hand it is & changes the state
     of the hand instance accordingly
     */
+
+    private void displayHands(PokerHand pokerHand){
+        for (int i = 0; i < 5; i++) {
+            System.out.println(
+            pokerHand.getCards().get(i).getRank().displayName + " of " +
+                    pokerHand.getCards().get(i).getSuit().displayName + ", ");
+        }
+    }
 
     private void checkForFlush(PokerHand pokerHand) {
         int count = 0;
@@ -81,7 +105,7 @@ public class Judge {
             if (elementValue + 1 == nextElementValue) {
                 count++;
             }
-            if (count == 4) {
+            if ((count == 4)| ((count ==3) && (nextElementValue == 14))){
                 if (pokerHand.getPokerHandType().equals("FLUSH")) {
                     pokerHand.setPokerHandType("STRAIGHT FLUSH");
                     pokerHand.setScore(0x900000 + (pokerHand.getCards().get(3).getRank().hexVal * 0x64));
