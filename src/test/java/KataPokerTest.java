@@ -42,12 +42,18 @@ public class KataPokerTest {
         list.add(new Object[]{"Black: 4H 3D AH 2H 5C  White: TC 9S AD JC 8C", "white"}); //high card
         list.add(new Object[]{"Black: 4H 4S 4D 2H 5H  White: TC TS TD AC 8C", "white"}); //three of a kind
 
+        list.add(new Object[]{"Black: 2H 3D 5S 9C KD  White: 2C 3H 4S 8C AH", "white"}); //high card
+        list.add(new Object[]{"Black: 2H 4S 4C 2D 4H  White: 2S 8S AS QS 3S", "black"}); //two pair
+        list.add(new Object[]{"Black: 2H 3D 5S 9C KD  White: 2C 3H 4S 8C KH", "black"}); //high card
+        list.add(new Object[]{"Black: 2H 3D 5S 9C KD  White: 2D 3H 5C 9S KH", "tie"}); // tie
+
+
 
         return list;
     }
 
     @Test
-    public void testbutts() {
+    public void testAllTheThings() {
         Assert.assertEquals(expectedOutput, Main.runAllTheThings(input));
     }
 

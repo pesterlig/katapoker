@@ -13,8 +13,6 @@ public class PokerHand {
 
     private int valueOfFourOfAKind;
     private int valueOfThreeOfAKind;
-    private int valueOfFullHouse;
-
     private int pairsCount;
 
     private Set<Integer> valuesOfPairs;
@@ -61,7 +59,7 @@ public class PokerHand {
         return cards;
     }
 
-    //method to create a (sorted ascending) hand from a splitInputString
+    //create a (sorted ascending) hand from a splitInputString
 
     public List<Card> createSortedAscendingHand(String splitInputString) {
         List<String> cardCodes = listCardCodes(splitInputString);
@@ -70,10 +68,7 @@ public class PokerHand {
         return sortedCards;
     }
 
-
-    //method to return a unique decimal value (from Card.getRank.hexVal))
-    // for a given hand of cards for high card comparison
-
+    //return a unique decimal value(from Card.getRank.hexVal))for high card comparison
 
     public int getDecimalHandVal() {
         String stringOfHexVal = getStringOfHexVal(cards);
@@ -93,12 +88,6 @@ public class PokerHand {
         return stringOfHexVal;
     }
 
-    // todo remove unused method
-    /*public String addOxToStringOfHexVal(String stringOfHexVal) {
-        String OxHexVal = "0x";
-        OxHexVal = OxHexVal.concat(stringOfHexVal);
-        return OxHexVal;
-    }*/
 
     public int findDistinctValues(List<Card> sortedCards) {
         List<Character> distinctHexValues = new ArrayList<>();
@@ -167,10 +156,6 @@ public class PokerHand {
         return valuesOfPairs;
     }
 
-    // todo why is this not used?
-    public void setValuesOfPairs(Set<Integer> valuesOfPairs) {
-        this.valuesOfPairs = valuesOfPairs;
-    }
 
     public int getPairsCount() {
         return pairsCount;

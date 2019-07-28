@@ -42,8 +42,7 @@ public class Main {
     }
 
 
-
-    public static String runAllTheThings(String input){
+    public static String runAllTheThings(String input) {
         PokerHand black = new PokerHand("black");
         String handBlack = input.split("  ")[0];
         List<Card> sortedAscendingBlackHand = black.createSortedAscendingHand(handBlack);
@@ -64,22 +63,20 @@ public class Main {
         pokerHands.add(black);
         pokerHands.add(white);
 
-        for (int i = 0; i < pokerHands.size(); i++) {
+       /* for (int i = 0; i < pokerHands.size(); i++) {
             List<PokerHand> bothHands = pokerHands;
-            System.out.println(bothHands);
-        }
+
+        }*/
 
         Judge judge = new Judge();
         judge.displayEachHandOfCards(pokerHands);
         judge.determinePokerHandType(pokerHands);
+
         String winner = judge.compareHandsForWin(pokerHands);
-        System.out.println(winner);
 
         return winner;
 
     }
-
-
 
 
 }

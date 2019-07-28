@@ -10,12 +10,11 @@ import static enums.Card.*;
 public class Judge {
 
 
-    // todo remove nested word - done
     public void determinePokerHandType(List<PokerHand> hands) {
 
         hands.forEach((hand) -> {
             checkForFlush(hand);
-            checkForStraight(hand); //todo: deal with edge case A,2,3,4,5
+            checkForStraight(hand);
             findDuplicatesOfRankValue(hand);
             checkForThreeOfAKind(hand);
             checkForTwoPairs(hand);
@@ -24,25 +23,21 @@ public class Judge {
         });
     }
 
-    public void displayEachHandOfCards(List<PokerHand> hands){
+    public void displayEachHandOfCards(List<PokerHand> hands) {
         hands.forEach((hand) -> {
             displayHands(hand);
         });
     }
 
 
-
-
     public String compareHandsForWin(List<PokerHand> hands) {
 
-        String winner = "Narp";
-
-
+        String winner;
 
         if (hands.get(0).getScore().equals(hands.get(1).getScore())) {
             winner = "tie";
-            System.out.println(hands.get(0).getHandName() + " has a " + hands.get(0).getPokerHandType()+ " and is tied with " +
-                    hands.get(1).getHandName() + " which has the same value " + hands.get(1).getPokerHandType()  );
+            System.out.println(hands.get(0).getHandName() + " has a " + hands.get(0).getPokerHandType() + " and is tied with " +
+                    hands.get(1).getHandName() + " which has the same value " + hands.get(1).getPokerHandType());
         } else if (hands.get(0).getScore() > hands.get(1).getScore()) {
             winner = hands.get(0).getHandName();
             System.out.println(hands.get(0).getHandName() + " wins with " + hands.get(0).getPokerHandType());
@@ -54,21 +49,13 @@ public class Judge {
         return winner;
     }
 
-    //
 
-
-
-    /*
-    public method takes an array of five cards & calls all private
-    methods to determine what kind of poker hand it is & changes the state
-    of the hand instance accordingly
-    */
-
-    private void displayHands(PokerHand pokerHand){
+    private void displayHands(PokerHand pokerHand) {
+        System.out.println(pokerHand.getHandName());
         for (int i = 0; i < 5; i++) {
             System.out.println(
-            pokerHand.getCards().get(i).getRank().displayName + " of " +
-                    pokerHand.getCards().get(i).getSuit().displayName + ", ");
+                    pokerHand.getCards().get(i).getRank().displayName + " of " +
+                            pokerHand.getCards().get(i).getSuit().displayName + ", ");
         }
     }
 
@@ -86,7 +73,6 @@ public class Judge {
         if (count == 4) {
             pokerHand.setPokerHandType("FLUSH");
             pokerHand.setScore(0x500000 + (pokerHand.getDecimalHandVal()));
-            System.out.println(pokerHand.getHandName() + " score: " + pokerHand.getScore());//todo: remove this later
 
         } else {
             pokerHand.setScore(0);
@@ -106,15 +92,15 @@ public class Judge {
             if (elementValue + 1 == nextElementValue) {
                 count++;
             }
-            if ((count == 4)| ((count ==3) && (nextElementValue == 14))){
+            if ((count == 4) | ((count == 3) && (nextElementValue == 14))) {
                 if (pokerHand.getPokerHandType().equals("FLUSH")) {
                     pokerHand.setPokerHandType("STRAIGHT FLUSH");
                     pokerHand.setScore(0x900000 + (pokerHand.getCards().get(3).getRank().hexVal * 0x64));
-                    System.out.println(pokerHand.getHandName() + " score: " + pokerHand.getScore());//todo: remove this later
+
                 } else {
                     pokerHand.setPokerHandType("STRAIGHT");
                     pokerHand.setScore(0x400000 + (pokerHand.getCards().get(3).getRank().hexVal * 0x64));
-                    System.out.println(pokerHand.getHandName() + " score: " + pokerHand.getScore());//todo: remove this later
+
                 }
 
             } else {
@@ -127,7 +113,7 @@ public class Judge {
     private void findDuplicatesOfRankValue(PokerHand pokerHand) {
         if (pokerHand.getCardMatchCounter().size() == 0) {
             Map<Rank, Integer> cardMatchCounter = new HashMap<>();
-            //Set<Integer> valueOfPairs = new HashSet<>();
+
         /*
         iterate through the inputCards ArrayList and build HashMap
         Key is the card valuation of each element, and Value(mapValue) is
@@ -146,13 +132,13 @@ public class Judge {
                 }
             }
             cardMatchCounter.forEach((rank, copies) -> {
-                System.out.println(cardMatchCounter.get(rank) + " => " + copies);//todo: get rid of this
+
                 int countPairs = 0;
                 if (copies == 4) { // todo make this a switch, don't forget break;s
                     pokerHand.setPokerHandType("FOUR_OF_KIND");
                     pokerHand.setValueOfFourOfAKind(rank.hexVal);
                     pokerHand.setScore(0x800000 + (pokerHand.getValueOfFourOfAKind() * 0x64));
-                    System.out.println(pokerHand.getHandName() + " score: " + pokerHand.getScore());//todo: remove this later
+
 
                 } else if (copies == 3) {
                     pokerHand.setPokerHandType("THREE_OF_KIND");
@@ -163,7 +149,6 @@ public class Judge {
                     pokerHand.setPairsCount(countPairs);
                     pokerHand.getValuesOfPairs().add(rank.value);
                 }
-
             });
             pokerHand.setCardMatchCounter(cardMatchCounter);
         }
@@ -177,7 +162,7 @@ public class Judge {
             if (pokerHand.getPairsCount() > 0) {
                 pokerHand.setPokerHandType("FULL_HOUSE");
                 pokerHand.setScore(0x600000 + (pokerHand.getValueOfThreeOfAKind() * 0x64));
-                System.out.println(pokerHand.getHandName() + " score: " + pokerHand.getScore());//todo: remove this later
+
             } else {
                 pokerHand.setScore(0x300000 + (pokerHand.getValueOfThreeOfAKind() * 0x64));
             }
@@ -191,12 +176,11 @@ public class Judge {
 
         findDuplicatesOfRankValue(pokerHand);
 
-        List<Card> twoPairs = new ArrayList<Card>(); // todo remove unused variable
         if (pairs.size() == 2) {
             pokerHand.setPokerHandType("TWO_PAIRS");
             int decimalBonus = pokerHand.findDistinctValues(pokerHand.getCards());
             pokerHand.setScore((0x200000 + (pairs.get(1) * 0x64)) + decimalBonus);
-            System.out.println(pokerHand.getHandName() + " score: " + pokerHand.getScore());//todo: remove this later
+
         }
 
     }
@@ -207,12 +191,12 @@ public class Judge {
 
         findDuplicatesOfRankValue(pokerHand);
 
-        List<Card> onePair = new ArrayList<Card>(); // todo remove unused variable
+
         if (pairs.size() == 1) {
             pokerHand.setPokerHandType("ONE_PAIR");
             int decimalBonus = pokerHand.findDistinctValues(pokerHand.getCards());
             pokerHand.setScore((0x100000 + (pairs.get(0) * 0x64)) + decimalBonus);
-            System.out.println(pokerHand.getHandName() + " score: " + pokerHand.getScore());//todo: remove this later
+
         }
 
     }
@@ -221,7 +205,7 @@ public class Judge {
         if (pokerHand.getPokerHandType().equals("UNDETERMINED")) {
             pokerHand.setPokerHandType("HIGH_CARD");
             pokerHand.setScore(pokerHand.getDecimalHandVal());
-            System.out.println(pokerHand.getHandName() + " score: " + pokerHand.getScore());//todo: remove this later
+
         }
     }
 
