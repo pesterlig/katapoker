@@ -1,6 +1,5 @@
 import enums.Card;
 import enums.Rank;
-
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -33,8 +32,7 @@ public class PokerHand {
         return cardMatchCounter;
     }
 
-    public List<String> listCardCodes(String handStr) {
-
+    private List<String> listCardCodes(String handStr) {
         List<String> cardCodes = new ArrayList<>();
         List<String> splitHand = Arrays.asList(handStr.split(" "));
         for (int i = 1; i < 6; i++) {
@@ -43,19 +41,14 @@ public class PokerHand {
         return cardCodes;
     }
 
-    public List<Card> parseCardCodes(List<String> cardCodes) {
+    private List<Card> parseCardCodes(List<String> cardCodes) {
         List<Card> cards = new ArrayList<>();
-
-        cardCodes.forEach(cardCode -> {
-            cards.add(Card.findByCode(cardCode));
-        });
-
+        cardCodes.forEach(cardCode -> cards.add(Card.findByCode(cardCode)));
         return cards;
     }
 
-    public List<Card> sortByValuation(List<Card> cards) {
-        Collections.sort(cards, new SortByRankValue());
-
+    private List<Card> sortByValuation(List<Card> cards) {
+        cards.sort(new SortByRankValue());
         return cards;
     }
 
@@ -64,19 +57,17 @@ public class PokerHand {
     public List<Card> createSortedAscendingHand(String splitInputString) {
         List<String> cardCodes = listCardCodes(splitInputString);
         List<Card> cards = parseCardCodes(cardCodes);
-        List<Card> sortedCards = sortByValuation(cards);
-        return sortedCards;
+        return sortByValuation(cards);
     }
 
     //return a unique decimal value(from Card.getRank.hexVal))for high card comparison
 
     public int getDecimalHandVal() {
         String stringOfHexVal = getStringOfHexVal(cards);
-        int hexStringToDecimal = Integer.parseInt(stringOfHexVal, 16);
-        return hexStringToDecimal;
+        return Integer.parseInt(stringOfHexVal, 16);
     }
 
-    public String getStringOfHexVal(List<Card> sortedCards) {
+    private String getStringOfHexVal(List<Card> sortedCards) {
         char[] handCharHexValDescending = new char[5];
         handCharHexValDescending[0] = sortedCards.get(4).getRank().hexVal;
         handCharHexValDescending[1] = sortedCards.get(3).getRank().hexVal;
@@ -84,32 +75,24 @@ public class PokerHand {
         handCharHexValDescending[3] = sortedCards.get(1).getRank().hexVal;
         handCharHexValDescending[4] = sortedCards.get(0).getRank().hexVal;
 
-        String stringOfHexVal = new String(handCharHexValDescending);
-        return stringOfHexVal;
+        return new String(handCharHexValDescending);
     }
 
-
     public int findDistinctValues(List<Card> sortedCards) {
-        List<Character> distinctHexValues = new ArrayList<>();
-
-        distinctHexValues = (sortedCards.stream()
+        List<Character> distinctHexValues = (sortedCards.stream()
                 .map(Card::getRank)
                 .distinct()
                 .map(rank -> rank.hexVal)
                 .collect(Collectors.toList()));
-        Collections.sort(distinctHexValues, Collections.reverseOrder());
-        String stringOfDistinctHexVal = distinctHexValues.stream().map(e -> e.toString()).collect(Collectors.joining());
+        distinctHexValues.sort(Collections.reverseOrder());
+        String stringOfDistinctHexVal = distinctHexValues.stream().map(Object::toString).collect(Collectors.joining());
 
-        int decimalHighCardBonus = Integer.parseInt(stringOfDistinctHexVal, 16);
-        return decimalHighCardBonus;
-
+        return Integer.parseInt(stringOfDistinctHexVal, 16);
     }
-
 
     public String getHandName() {
         return handName;
     }
-
 
     public ArrayList<Card> getCards() {
         return cards;
@@ -151,11 +134,9 @@ public class PokerHand {
         this.valueOfThreeOfAKind = valueOfThreeOfAKind;
     }
 
-
     public Set<Integer> getValuesOfPairs() {
         return valuesOfPairs;
     }
-
 
     public int getPairsCount() {
         return pairsCount;

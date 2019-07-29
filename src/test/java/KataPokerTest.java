@@ -1,5 +1,4 @@
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -54,7 +53,7 @@ public class KataPokerTest {
 
     @Test
     public void testAllTheThings() {
-        Assert.assertEquals(expectedOutput, Main.runAllTheThings(input));
+        Assert.assertEquals(expectedOutput, Main.evaluateHands(input));
     }
 
 
